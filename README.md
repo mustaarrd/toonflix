@@ -2,6 +2,12 @@
 
 A new Flutter project.
 
+lecture: https://github.com/mustaarrd/toonflix/edit/main/README.md
+
+api: https://webtoon-crawler.nomadcoders.workers.dev/
+
+
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
