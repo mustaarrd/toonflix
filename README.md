@@ -2,7 +2,7 @@
 
 A new Flutter project.
 
-lecture: https://github.com/mustaarrd/toonflix/edit/main/README.md
+lecture: https://nomadcoders.co/flutter-for-beginners/lectures/
 
 api: https://webtoon-crawler.nomadcoders.workers.dev/
 
