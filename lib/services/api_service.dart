@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:toonflix/model/Webtoon.dart';
+import 'package:toonflix/models/Webtoon.dart';
 import 'package:http/http.dart' as http;
 import 'package:toonflix/models/webtoon_detail_model.dart';
 import 'package:toonflix/models/webtoon_episode_model.dart';
@@ -47,6 +47,9 @@ class ApiService {
     if (response.statusCode == 200) {
       final episodes = jsonDecode(response.body);
       for (var ep in episodes) {
+        if (epInstances.length > 10) {
+          break;
+        }
         epInstances.add(WebtoonEpisodeModel.fromJson(ep));
       }
       return epInstances;
