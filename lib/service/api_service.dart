@@ -3,23 +3,26 @@ import 'package:toonflix/model/Webtoon.dart';
 import 'package:http/http.dart' as http;
 
 class ApiService {
-  final String baseUrl = "https://webtoon-crawler.nomadcoders.workers.dev";
-  final String today = "today";
+  static const String baseUrl =
+      "https://webtoon-crawler.nomadcoders.workers.dev";
+  static const String today = "today";
 
-  ApiService();
+  static Future<String> delay(Duration due) async {
+    await Future.delayed(due);
+    return "done";
+  }
 
-  Future<List<WebtoonModel>> getTodaysToons() async {
+  static Future<List<WebtoonModel>> getTodaysToons() async {
+    List<WebtoonModel> webtoonInstances = [];
     final url = Uri.parse('$baseUrl/$today');
     final response = await http.get(url);
     if (response.statusCode == 200) {
-      List<WebtoonModel> webtoonInfo = [];
       final List<dynamic> webtoons = jsonDecode(response.body);
       for (var webtoon in webtoons) {
-        print(webtoon);
-        //WebtoonModel.fromJson(webtoon);
-        //webtoonInfo.add(model);
+        final instance = WebtoonModel.fromJson(webtoon);
+        webtoonInstances.add(instance);
       }
-      return webtoonInfo;
+      return webtoonInstances;
     }
     throw Error();
   }
